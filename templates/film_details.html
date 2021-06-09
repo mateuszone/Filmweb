@@ -1,0 +1,99 @@
+{% extends 'main.html' %}
+{% load bootstrap %}
+{% block title %}Film details{% endblock title %}
+
+{% block body %}
+    <div class="container-fluid">
+        <figure class="text-center">
+            <h1 class="display-1">{{ film.title }}</h1>
+            <img src="/media/{{ film.poster }}" alt="{{ film.title }}" style="width: auto; height: 300px;">
+            <blockquote class="blockquote">
+                <p>{{ film.description }}</p>
+            </blockquote>
+            <blockquote class="blockquote">
+                <small>Imdb_rating: {{ film.imdb_rating }}</small>
+            </blockquote>
+            <h1 class="display-3">CAST</h1>
+        </figure>
+
+{#        {% for role in film.roles.all %}#}
+{#            <div class="card text-center">#}
+{#                <div class="card-header">#}
+{#                    Actor: {{ role }}#}
+{#                </div>#}
+{#                <div class="card-body">#}
+{#                    <p class="card-text"><img src="/media/{{ role.photo }}" alt="{{ role }}"#}
+{#                                              style="width: auto; height: 300px;"></p>#}
+                    {#                <a href="#" class="btn btn-primary">Go somewhere</a>#}
+{#                </div>#}
+{#                <div class="card-footer text-muted">#}
+{#                    as role_name zapytac sławka#}
+{#                </div>#}
+{#            </div>#}
+{#            <p></p>#}
+{#        {% endfor %}#}
+            {% for role in roles %}
+
+                    {% if role.film == film %}
+                        <div class="card text-center">
+                            <div class="card-header">
+                                    Actor: {{ role.actor }}
+                                                    </div>
+                            <div class="card-body">
+                                <p class="card-text"><img src="/media/{{ role.actor.photo }}" alt="{{ role }}"
+                                 style="width: auto; height: 300px;"></p>
+                            </div>
+                            <div class="card-footer text-muted">
+                                as {{ role.role_name}}
+                            </div>
+                        </div>
+                    {% endif %}
+
+
+        {% endfor %}
+        <div class="faketext">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <figure class="text-center">
+                <h1 class="display-3 center">REVIEWS</h1>
+            </figure>
+        </div>
+
+        {% for review in reviews %}
+            {% if review.film_id == film.id %}
+                <div class="card text-center">
+                    <div class="card-header">
+                        User: {{ review.user }}
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Grade: {{ review.user_rating }}</h5>
+                        <p class="card-text">Opinion: {{ review.user_review }}</p>
+                        {#                <a href="#" class="btn btn-primary">Go somewhere</a>#}
+                    </div>
+                    <div class="card-footer text-muted">
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock body %}
+

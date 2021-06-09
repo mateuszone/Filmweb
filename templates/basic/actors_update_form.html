@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+{% load bootstrap %}
+{% block title %}Actor edit{% endblock title %}
+
+{% block body %}
+    <h1>Edit actor record below: </h1>
+    <form method="post">
+        {% csrf_token %}
+{#        <label for="fname">First name:</label><br>#}
+{#        <input type="text" id="fname" name="fname" value="{{ actor.name }}"><br>#}
+{#        <label for="lname">Last name:</label><br>#}
+{#        <input type="text" id="lname" name="lname" value="{{ actor.surname }}"><br><br>#}
+{#        <label for="photo">Photo:</label><br>#}
+{#        <input type="file" id="photo" name="photo" value="{{ actor.photo }}"><br><br>#}
+        {{ form | bootstrap}}
+        <button type="submit" class="btn btn-success">Save Changes</button>
+    </form>
+{#    <h1>{{ error }}</h1>#}
+{% endblock body %}

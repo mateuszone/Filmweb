@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+{% load bootstrap %}
+{% block title %}Register{% endblock title %}
+
+{% block body %}
+    {% if  message %}
+        <p>{{ message }}</p>
+    {% endif %}
+    {%  if form %}
+        <form method="post">
+            {% csrf_token %}
+            {{ form | bootstrap}}
+            <button type="submit" class="btn btn-success">Create account</button>
+        </form>
+    {% endif %}
+
+{% endblock body %}
+

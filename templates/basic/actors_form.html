@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+{% load bootstrap %}
+{% block title %}Actor edit{% endblock title %}
+
+{% block body %}
+    <h1>Add new actor to database: </h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form | bootstrap}}
+        <button type="submit" class="btn btn-success">Add Actor</button>
+    </form>
+    <h1>{{ message }}</h1>
+{% endblock body %}

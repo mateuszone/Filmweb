@@ -1,0 +1,86 @@
+{% extends 'main.html' %}
+{% load bootstrap %}
+{% block title %}Profile{% endblock title %}
+
+{% block body %}
+    <h1 class="display-3 center">Welcome {{ user_info }}. Nice to see you.</h1>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1>Your seen movies collection:</h1>
+    <br>
+    <br>
+     {% for movie in films %}
+        {% for seen_movie in seen_list %}
+            {% if movie.title == seen_movie %}
+                <div class="card" style="width: 18rem;">
+                    <img src="/media/{{ movie.poster }}" class="card-img-top" alt="{{ movie.title }}">
+
+                    <div class="card-body">
+                        <p class="card-text">{{ movie.description }}</p>
+                        </div>
+                    </div>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1>Your movie reviews collection:</h1>
+    <br>
+    <br>
+    {% for movie in reviews %}
+        {% for seen_movie in seen_list %}
+            {% if movie.film.title == seen_movie %}
+                 <div class="card text-center">
+                    <div class="card-header">
+                        {{ movie.film.title }}
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text"><img src="/media/{{ movie.film.poster }}" alt="{{ movie.film.title }}"
+                                                  style="width: auto; height: 300px;"></p>
+                        {#                <a href="#" class="btn btn-primary">Go somewhere</a>#}
+                    </div>
+                    <div class="card-footer text-muted">
+                        <h3>My rating: {{ movie.user_rating }}</h3>
+                        <h6>My review: {{ movie.user_review }}</h6>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+
+
+{% endblock body %}
+

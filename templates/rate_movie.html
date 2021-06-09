@@ -1,0 +1,17 @@
+{% extends 'main.html' %}
+{% load bootstrap %}
+{% block title %}Rate movie{% endblock title %}
+
+{% block body %}
+    {{ movie }}
+    {% if form %}
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form | bootstrap }}
+            <button type="submit" class="btn btn-success">Rate It!</button>
+        </form>
+    {% endif %}
+    {% if message %}
+        <h1>{{ message }}</h1>
+    {% endif %}
+{% endblock body %}

@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} Main Page{% endblock title%}</title>
+{#    <link rel="stylesheet" href="/filmyweb/static/mycss.css"> tak nie mozna bo nie widzi tego pliku, zeby #}
+{#    wczytac podrzedne style musi uzywac metody load static jak ponizej#}
+{#    <link rel="stylesheet" href="/static/style.css">#}
+{#        <link rel="stylesheet" href="{% static 'style.css' %}">#}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/bcf71a3d9c.js" crossorigin="anonymous"></script>
+    {% block script %} {% endblock %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Filmweb</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link active" aria-current="page" href="{% url 'Main' %}">Home</a>
+            <a class="nav-link" href="{% url 'Films' %}">Films</a>
+            <a class="nav-link" href="{% url 'Actors' %}">Actors</a>
+            {% if request.user.is_superuser %}
+                <a class="nav-link" href="{% url 'Roles' %}">Roles</a>
+            {% endif %}
+{#            <a class="nav-link" href="{% url 'Roles' %}">Roles</a>#}
+            {% if user.is_authenticated %}
+                <a class="nav-link" href="{% url 'Profile' %}">My Profile</a>
+                <a class="nav-link" href="{% url 'Logout' %}">Logout</a>
+            {% else %}
+                <a class="nav-link" href="{% url 'Login' %}">Login</a>
+                <a class="nav-link" href="{% url 'Register' %}">Register</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </nav>
+{% block body %}
+    <h1>Premiery</h1>
+    {% for key, val in data.items %}
+{#        <div class="container">#}
+{#            <div class="row">#}
+{#                <div class="col-3">#}
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ val.0 }}" class="card-img-top" alt="{{ key.0 }}">
+                          <div class="card-body">
+                            <h5 class="card-title">{{ key }}</h5>
+                            <p class="card-text">{{ val.1 }}</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                          </div>
+                    </div>
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#        <h1>{{ key }}</h1>#}
+{#        <img src="{{ val.0 }}" alt="{{ key.0 }}">#}
+{#        <p>{{ val.1 }}</p>#}
+    {% endfor %}
+    {{ a }}
+{% endblock body %}
+{#    <div class="footer">#}
+{#            <a class="navbar-brand" href="#">Filmweb©2021</a>#}
+{#    </div>#}
+</body>
+</html>

@@ -1,0 +1,10 @@
+{% extends 'main.html' %}
+{% load bootstrap %}
+{% block title %}Delete{% endblock title %}
+{% block body %}
+    <form method="post">
+        {% csrf_token %}
+        <p>Are you sure you want to delete the Film  ?</p>
+        <p><button type="submit" value="Confirm">Confirm</button></p>
+    </form>
+{% endblock %}

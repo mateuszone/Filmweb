@@ -1,0 +1,59 @@
+{% extends 'main.html' %}
+{% load bootstrap %}
+{% block title %}Actors{% endblock title %}
+
+{% block body %}
+ <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Surname</th>
+          <th scope="col">Played in</th>
+          <th scope="col">Photo</th>
+
+        </tr>
+      </thead>
+      <tbody>
+    {% for actor in page_obj %}
+        <tr>
+            <th scope="row">{{ actor.id }}</th>
+            <td>{{ actor.name }}</td>
+            <td>{{ actor.surname }}</td>
+            <td>{% for movie in roles %}
+                    {% if movie.actor.name == actor.name %}
+                        <p>{{ movie.film.title }}</p>
+                    {% endif %}
+                {% endfor %}
+            </td>
+            <td><img src="/media/{{ actor.photo }}" alt="{{ actor.name }}" style="width: 100px; height: 100px;"></td>
+            <td><a href="{% url 'Actor_modify' actor.id %}"
+               class="btn btn-success">Edit Actor</a></td>
+            <td><a href="{% url 'Actor_delete' actor.id %}"
+               class="btn btn-danger">Delete Actor</a></td>
+        </tr>
+    {% endfor %}
+      </tbody>
+    </table>
+    <button><a href="{% url 'Actors_add'  %}" class="btn btn-success">Create New Actor</a></button>
+
+    <div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock body %}
+

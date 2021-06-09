@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+{% load bootstrap %}
+{% block title %}Create Film{% endblock title %}
+
+{% block body %}
+    <h1>Add new film to database: </h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form | bootstrap}}
+        <button type="submit" class="btn btn-success">Add Film</button>
+    </form>
+{% endblock body %}
