@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'bootstrapform',
     # 'basic.apps.UsersConfig',
     'basic',
-    'Filmweb.basic',
+    # 'Filmweb.basic',
 ]
 
 MIDDLEWARE = [
