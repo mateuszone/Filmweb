@@ -1,10 +1,11 @@
-# blog
+# Filmweb
 A real movie-fan application built with Django Framework. In this project I've implemented full user authentication system and many subdomains:
 Home:
 - at this page user can see upcoming movies in next 30 days in Polish cinemas, which are scraped through bs4 library.
 Films:
 - at this page user can see table with all films in db and make CRUD operations on them.
 - this page use pagination.
+- at this page user can click on any movie and if is authenticated user can make review and rate movie.
 Actors:
 - at this page user can see table with all actors in db and make CRUD operations on them.
 - this page use pagination.
@@ -26,8 +27,8 @@ A complete blogging application with post list, comments, tags and user authenti
 
 First you should clone this repository:
 ```
-git clone https://github.com/JKK86/blog.git
-cd  blog
+git clone https://github.com/mateuszone/Filweb.git
+cd  Filmweb
 ```
 
 To run the project you should have Python 3 installed on your computer. Then it's recommended to create a virtual environment for your projects dependencies. To install virtual environment:
@@ -55,4 +56,4 @@ python manage.py runserver
 
 ## Source
 
-This app is based on Antonio Mele book „Django 3”.
+This is my first own project from scratch.
