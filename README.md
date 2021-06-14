@@ -3,15 +3,19 @@ A real movie-fan application built with Django Framework. In this project I've i
 
 Home:
 - at this page user can see upcoming movies in next 30 days in Polish cinemas, which are scraped through bs4 library.
+- 
 Films:
 - at this page user can see table with all films in db and make CRUD operations on them.
 - this page use pagination.
 - at this page user can click on any movie and if is authenticated user can make review and rate movie.
+- 
 Actors:
 - at this page user can see table with all actors in db and make CRUD operations on them.
 - this page use pagination.
+- 
 Roles:
 - at this page user can add role to specific actor.
+- 
 MyProfile:
 - at this page user can see a list of watched movies and list of user movie's reviews.
 
