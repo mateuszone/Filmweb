@@ -47,11 +47,12 @@ class Main(View):
 
             soup = BeautifulSoup(response, "html.parser")
             description = soup.select('div .filmPosterSection__plot')
+            print(description)
             for x in description:
                 try:
-                    descriptions.append(x.text[:x.text.index('. ')])
+                    descriptions.append(x.text.rsplit(".",1)[0])
                 except:
-                    descriptions.append(x.text[:x.text.index('?')])
+                    pass
                 # print(descriptions)
         data_ctx = {premiery[x]: [zdjecia[x], descriptions[x]] for x in range(0, len(premiery[:11]) - 1)}
         ctx = {

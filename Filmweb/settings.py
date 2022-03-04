@@ -11,7 +11,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
+from dotenv import load_dotenv
 import django
+import django_on_heroku
+load_dotenv()
+
 
 
 
@@ -22,12 +26,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-m*o)ryibkds^6zf0mu%7qx)!&ac8$fkv(2y*m7^ej&5c@((8f_'
-
+SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost",'.herokuapp.com', ".filmwebscrapping.herokuapp.com"]
+# ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -140,3 +144,5 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = 'my_media'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'my_media')
 django.setup()
+# django heroku
+django_on_heroku.settings(locals())
