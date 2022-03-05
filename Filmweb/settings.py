@@ -35,14 +35,11 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    # 'django.contrib.sites',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrapform',
-    # 'basic.apps.UsersConfig',
     'basic',
-    # 'Filmweb.basic',
 ]
 
 MIDDLEWARE = [
@@ -124,7 +121,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'basic/static'),]
+# HINT!! We don't need to add this staticfiles_dirs to every app because django searches by default to staticfiles
+# in installed_apps
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
+
+# STATICFILES_DIRS = [str(BASE_DIR.joinpath('basic/static'))]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
