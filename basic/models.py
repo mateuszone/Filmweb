@@ -1,4 +1,6 @@
+from django.utils import timezone
 from pyexpat import model
+
 
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
@@ -6,6 +8,8 @@ from django.contrib.auth.models import User
 
 
 # Create your models here.
+
+
 
 class Genre(models.Model):
     # 0 = 'Undefined'
@@ -69,6 +73,7 @@ class Films(models.Model):
     poster = models.ImageField(upload_to='posters', null=True, blank=True)
     roles = models.ManyToManyField("Actors", through='Roles', related_name='role')
     film_reviews = models.ManyToManyField(User, through='FilmReviews')
+    scrapped_date = models.DateField(default=timezone.now, null=True, blank=True)
 
     def __str__(self):
         return self.title_with_year()

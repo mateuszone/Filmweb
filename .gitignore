@@ -4,4 +4,5 @@ db.sqlite3
 __pycache__
 /static
 .idea
+bootstrap_templates
 .env
