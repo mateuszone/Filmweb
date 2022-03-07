@@ -1,9 +1,10 @@
 # Filmweb
 A real movie-fan application built with Django Framework. In this project I've implemented full user authentication system and many subdomains:
 
-## Live
-### visit: https://filmwebscrapping.herokuapp.com/
-#### credentials: login:admin pass:admin
+## Heroku live preview
+### Fully functioning app with credential below. This app is using AWS RDS Postgres 12.9 on a free tier and heroku hobby plan so please be patient in terms of perpormance 
+### https://filmwebscrapping.herokuapp.com/
+#### login/pass: admin[both are the same]
 
 Home:
 - at this page user can see upcoming movies in next 30 days in Polish cinemas, which are scraped through bs4 library. 
