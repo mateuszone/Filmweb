@@ -2,26 +2,30 @@
 A real movie-fan application built with Django Framework. In this project I've implemented full user authentication system and many subdomains:
 
 ## Heroku live preview
-### Fully functioning app with credential below. This app is using AWS RDS Postgres 12.9 on a free tier and heroku hobby plan so please be patient in terms of perpormance 
+Fully functioning app with credential below. This app is using AWS RDS Postgres 12.9 on a free tier and heroku hobby plan so please be patient in terms of perpormance 
 ### https://filmwebscrapping.herokuapp.com/
 #### login/pass: admin[both are the same]
 
-Home:
+## Subdomains
+
+https://filmwebscrapping.herokuapp.com:
 - at this page user can see upcoming movies in next 30 days in Polish cinemas, which are scraped through bs4 library. 
 
-Films:
+ALl domains below demand to be logged in- login/pass: admin
+
+https://filmwebscrapping.herokuapp.com/films:
 - at this page user can see table with all films in db and make CRUD operations on them.
 - this page use pagination.
 - at this page user can click on any movie and if is authenticated user can make review and rate movie.
 
-Actors:
+https://filmwebscrapping.herokuapp.com/actors:
 - at this page user can see table with all actors in db and make CRUD operations on them.
 - this page use pagination.
  
-Roles:
+https://filmwebscrapping.herokuapp.com/roles:
 - at this page user can add role to specific actor.
  
-MyProfile:
+https://filmwebscrapping.herokuapp.com/MyProfile:
 - at this page user can see a list of watched movies and list of user movie's reviews.
 
 ## General Info
