@@ -1,6 +1,9 @@
 # Filmweb
 A real movie-fan application built with Django Framework. In this project I've implemented full user authentication system and many subdomains:
 
+## General Info
+List of most import urls to check inside this application:
+
 Home:
 - simple main page
 
@@ -25,8 +28,8 @@ Roles:
 MyProfile:
 - at this page user can see a list of watched movies and list of user movie's reviews.
 
-## General Info
-A complete blogging application with post list, comments, tags and user authentication.
+Registration/Login/Logout:
+- at these pages user can do all auth operations.
 
 ## Technologies:
 - Python
