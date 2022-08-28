@@ -1,0 +1,114 @@
+{% extends 'main.html' %}
+{% load bootstrap %}
+{% load static %}
+{% block title %}Film details{% endblock title %}
+{% block script %}
+<link rel="stylesheet" href="{% static 'css/film_details_maicons.css' %}">
+<link rel="stylesheet" href="{% static 'css/film_details_owl_carousel.css' %}">
+<link rel="stylesheet" href="{% static 'css/film_details_animate.css' %}">
+<link rel="stylesheet" href="{% static 'css/film_details_theme.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock script %}
+{% block body %}
+
+<!--<div class="page-section pt-5">-->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <nav aria-label="Breadcrumb">
+                    <ol class="breadcrumb bg-transparent py-0 mb-5">
+                        <li class="breadcrumb-item"><a href="{% url 'Premieres' %}">Premieres</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'Films' %}">Films</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"> {{ film.title }}</li>
+                    </ol>
+                </nav>
+            </div>
+        </div> <!-- .row -->
+
+        <div class="row">
+            <div class="col-lg-8">
+                <article class="blog-details">
+                    <div class="post-thumb">
+                        <img src="{{ film.poster }}"
+                             onerror="if (this.src != 'error.jpg') this.src = 'https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg';"
+                             alt="{{ film.title }}">
+                    </div>
+
+                    <h2 class="post-title h1">{{ film.title }}</h2>
+                    <div class="post-content">
+                        <p>{{ film.description }}</p>
+                    </div>
+                </article> <!-- .blog-details -->
+
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <h1>Reviews</h1>
+                        <div class="col-sm-5 col-md-6 col-12 pb-4">
+                        </div>
+                        {% for review in reviews %}
+                        <div class="col-sm-5 col-md-6 col-12 pb-4">
+                        <div class="comment mt-4 text-justify">
+                            <h4> {{ review.user }}</h4>
+                            <h4> User rating: {{ review.user_rating }}</h4>
+                            <p>{{ review.user_review }}</p>
+                        </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="comment-form-wrap pt-5">
+                    <h3 class="mb-5">Leave a review if you watched this movie</h3>
+                  <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ rate_form | bootstrap }}
+                        <div class="form-group">
+                            <input type="submit" value="Post Review" class="btn btn-primary">
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="sidebar">
+<!--                    <div class="sidebar-block">-->
+<!--                        <h3 class="sidebar-title">Search for movie in imdb API</h3>-->
+<!--                        <form action="#" class="search-form">-->
+<!--                            <div class="form-group">-->
+<!--                                <input type="text" class="form-control" placeholder="Type a keyword to search for movie">-->
+<!--                                <button type="submit" class="btn"><span class="icon mai-search"></span></button>-->
+<!--                            </div>-->
+<!--                        </form>-->
+<!--                    </div>-->
+
+                    <div class="sidebar-block">
+                        <h3 class="sidebar-title">Informations</h3>
+                        <ul class="categories">
+                            <li><span class="text-grey">Premiere: {% if film.premiere is not None %} {{ film.premiere }} {% else %} N/A {% endif %}</span></li>
+                            <li><span class="text-grey">Genre: {% if film.genre is not None %} {{ film.genre }} {% else %} N/A {% endif %}</span></li>
+                            <li><span class="text-grey">Viewed by {% if film.seen_times is not None %} {{ film.seen_times }} {% else %} N/A {% endif %} users.</span></li>
+                            <li><span class="text-grey">User average rating: {% if film.average_user_rating is not None %} {{ film.average_user_rating }} {% else %} N/A {% endif %}</span></li>
+                            <li><span class="text-grey">IMDB rating: {% if film.imdb_rating is not None %} {{ film.imdb_rating }} {% else %} N/A {% endif %}</span></li>
+                        </ul>
+                    </div>
+
+
+                </div>
+            </div>
+        </div> <!-- .row -->
+    </div> <!-- .container -->
+</div> <!-- .page-section -->
+
+
+<script src="../assets/js/jquery-3.5.1.min.js"></script>
+
+<script src="../assets/js/bootstrap.bundle.min.js"></script>
+
+<script src="{% static 'js/film_detail_owl_carousel_min.js' %}"></script>
+<script src="{% static 'js/film_details_wow_min.js' %}"></script>
+<script src="{% static 'js/film_details_theme.js' %}"></script>
+
+
+{% endblock body %}
+

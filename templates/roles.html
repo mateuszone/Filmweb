@@ -1,0 +1,48 @@
+{% extends 'main.html' %}
+{% load bootstrap %}
+{% block title %}Films{% endblock title %}
+{% block script %}
+{% endblock %}
+{% block body %}
+<div class="container-fluid" style="padding-left: 1.5rem; padding-right: 1.5rem; padding-top: 1.5rem;">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Actor</th>
+            <th scope="col">Role</th>
+            <th scope="col">Movie</th>
+            <th scope="col">Edit</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for object in data %}
+            <tr>
+                <th scope="row">{{ object.actor.name }} {{ object.actor.surname }}</th>
+                <td>{{ object.role_name }}</td>
+                <td><a href="{% url 'Films_details' object.film.id %}">{{ object.film.title }}</td>
+                <td><a href="{% url 'Role_modify' object.id %}" class="btn btn-success">Edit Role</a></td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock body %}
+    {% block footer %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="footer navbar fixed-bottom navbar-light ">
+                <div class="container">
+                    <p>FIlmwebscrapper sample project <a href="https://czaja.dev/">www.czaja.dev</a> by <a
+                            href="https://github.com/mateuszone">@mateuszone</a>.</p>
+                </div>
+            </div>
+        </div>
+        </footer>
+    </div>
+    {% endblock footer %}
+
+
+
+
+

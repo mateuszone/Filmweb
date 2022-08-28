@@ -1,0 +1,71 @@
+{% extends 'main.html' %}
+{% load bootstrap %}
+{% load static %}
+{% load static %}
+{% block title %}Search results {% endblock title %}
+
+{% block body %}
+<div class="containe-fluid">
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-3">Upcoming movie premieres in Polish Cinemas</h1>
+            <p>This site contains data scrapped asynchronously from filmweb.pl.</p>
+            <p><a class="btn btn-primary btn-lg" href="https://www.filmweb.pl/ranking/wantToSee/next30daysPoland"
+                  role="button">Visit Filmweb.pl &raquo;</a></p>
+        </div>
+    </div>
+</div>
+<h1></h1>
+<div class="container-fluid">
+    <div class="row">
+        {% for movie in page_obj %}
+        <div class="info-column col-lg-2 col-md-4 col-sm-12">
+            <div class="card">
+                <img src="{{ movie.poster }}"
+                     onerror="if (this.src != 'error.jpg') this.src = 'https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg';"
+                     alt="{{ movie.title }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ movie.title }}</h5>
+                    <p class="card-text">{{ movie.description }}</p>
+                    <a href="{% url 'Films_details' movie.id %}" class="btn btn-primary">Przejdz do filmu</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="row">
+        <div class="pagination">
+                    <span class="step-links">
+                        {% if page_obj.has_previous %}
+                            <a href="?page=1">&laquo; first</a>
+                            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                        </span>
+
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}">next</a>
+                            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                        {% endif %}
+                    </span>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}
+{% block footer %}
+<div class="container-fluid">
+    <footer>
+        <div class="row">
+            <div class="footer navbar navbar-light">
+                <div class="container">
+                    <p>FIlmwebscrapper sample project <a href="https://czaja.dev/">www.czaja.dev</a> by <a
+                            href="https://github.com/mateuszone">@mateuszone</a>.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+{% endblock footer %}

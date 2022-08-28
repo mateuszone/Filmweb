@@ -1,0 +1,59 @@
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl {
+  width: 100%;
+  padding-right: 0;
+  padding-left: 0;
+  padding-botoom: 0;
+}
+a {
+    color: grey;
+}
+body {
+    background-color: white;
+}
+.login-form {
+    padding: 5rem;
+}
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+.navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show > .nav-link {
+  color: white;
+}
+.navbar-light .navbar-nav .nav-link{
+    color: white;
+}
+
+.movie {
+    padding-bottom: 50px;
+    border-radius: 25px;
+}
+/* cards */
+.card {
+    margin: 10px;
+}
+
+.card-text { height: 180px; overflow-x: scroll; width: 100%; }
+
+.card-text p { width: 650px; word-break: break-word; }
+.card-title { height: 100px; overflow-x: scroll; width: 100%; }
+
+.card-title p { width: 650px; word-break: break-word; }
+
+/* Footer section */
+.footer {
+   width: 100%;
+   background-color: #007bff!important;
+   margin-top: 5rem;
+}
+.success_msg {
+    text-align: center;
+    padding: 5rem;
+    font-size: 35px;
+}
+
+

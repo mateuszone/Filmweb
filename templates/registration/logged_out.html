@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+{% load bootstrap %}
+{% block title %}Login{% endblock title %}
+{% block body %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form| bootstrap }}
+        <button type="submit" class="btn btn-danger">Log out</button>
+    </form>
+{% endblock %}
+    {% block footer %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="footer navbar fixed-bottom navbar-light ">
+                <div class="container">
+                    <p>FIlmwebscrapper sample project <a href="https://czaja.dev/">www.czaja.dev</a> by <a
+                            href="https://github.com/mateuszone">@mateuszone</a>.</p>
+                </div>
+            </div>
+        </div>
+        </footer>
+    </div>
+    {% endblock footer %}

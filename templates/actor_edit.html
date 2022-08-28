@@ -1,0 +1,29 @@
+{% extends 'main.html' %}
+{% load bootstrap %}
+{% block title %}Actor edit{% endblock title %}
+
+{% block body %}
+<div class="container" style="padding-left: 3rem; padding-right: 3rem; padding-top: 1.5rem">
+    <div class="success_msg">
+        <h1>Edit actor record below: </h1>
+    </div>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form | bootstrap }}
+        <button type="submit" class="btn btn-success">Save Changes</button>
+    </form>
+</div>
+    {% endblock body %}
+    {% block footer %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="footer navbar fixed-bottom navbar-light ">
+                <div class="container">
+                    <p>FIlmwebscrapper sample project <a href="https://czaja.dev/">www.czaja.dev</a> by <a
+                            href="https://github.com/mateuszone">@mateuszone</a>.</p>
+                </div>
+            </div>
+        </div>
+        </footer>
+    </div>
+    {% endblock footer %}

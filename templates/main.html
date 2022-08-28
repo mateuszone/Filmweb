@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
+    <title>{% block title %} Premieres Page{% endblock title %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    <script src="https://kit.fontawesome.com/bcf71a3d9c.js" crossorigin="anonymous"></script>
+    {% block script %} {% endblock %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% endblock head %}
+</head>
+
+<body>
+<div class="container-fluid">
+    <nav class="navbar navbar-collapse navbar-expand-lg navbar-expand-md navbar-expand-sm navbar-light bg-primary ">
+        <!--    <nav class="navbar navbar-expand-md navbar-light bg-light">-->
+        <div class="row">
+            <a class="navbar-brand" href="#">Filmweb</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="navbar-nav">
+                    <a class="nav-link nav-item" aria-current="page" href="{% url 'Main' %}">Home</a>
+                    <a class="nav-link nav-item" aria-current="page" href="{% url 'Premieres' %}">Premieres</a>
+                    <a class="nav-link nav-item" aria-current="page" href="{% url 'Search' %}">Search</a>
+                    <a class="nav-link nav-item" href="{% url 'Films' %}">Films</a>
+                    <a class="nav-link nav-item" href="{% url 'Actors' %}">Actors</a>
+                    {% if request.user.is_superuser %}
+                    <a class="nav-link nav-item" href="{% url 'Roles' %}">Roles</a>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                    <a class="nav-link nav-item" href="{% url 'Profile' %}">My Profile</a>
+                    <a class="nav-link nav-item" href="{% url 'Logout' %}">Logout</a>
+                    {% else %}
+                    <a class="nav-link nav-item" href="{% url 'Login' %}">Login</a>
+                    <a class="nav-link nav-item" href="{% url 'Register' %}">Register</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+    {% block body %}
+    <div class="containe-fluid">
+        <div class="jumbotron">
+            <div class="container">
+                <div class="row">
+                    <h1 class="display-3">Welcome to Film App</h1>
+                </div>
+                <div class="container-fluid" style="padding-left: 1rem;">
+                    <div class="row">
+                        <p>This web app was created in a learning purpose.</p>
+                        <br>
+                    </div>
+                    <div class="row">
+                        <p>Feel free to register, comment and use OMDB API in order to search for movies.
+                    </div>
+                    <div class="row">
+                        <p>Visit <a href="https://github.com/mateuszone/Filmweb">github to see the source code.</a></p>
+                    </div>
+                    <div class="row">
+                        <a class="btn btn-primary btn-lg"
+                           href="https://www.czaja.dev"
+                           role="button">Visit my portofolio website to check other projects. &raquo;</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+</div>
+<
+<div class="container">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+        molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+        numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+        optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
+        obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
+        nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
+        tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
+        quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos
+        sapiente officiis modi at sunt excepturi expedita sint? Sed quibusdam
+        recusandae alias error harum maxime adipisci amet laborum. Perspiciatis
+        minima nesciunt dolorem! Officiis iure rerum voluptates a cumque velit
+        quibusdam sed amet tempora. Sit laborum ab, eius fugit doloribus tenetur
+        fugiat, temporibus enim commodi iusto libero magni deleniti quod quam
+        consequuntur! Commodi minima excepturi repudiandae velit hic maxime
+        doloremque. Quaerat provident commodi consectetur veniam similique ad
+        earum omnis ipsum saepe, voluptas, hic voluptates pariatur est explicabo
+        fugiat, dolorum eligendi quam cupiditate excepturi mollitia maiores labore
+        suscipit quas? Nulla, placeat. Voluptatem quaerat non architecto ab laudantium
+        modi minima sunt esse temporibus sint culpa, recusandae aliquam numquam
+        totam ratione voluptas quod exercitationem fuga. Possimus quis earum veniam
+        quasi aliquam eligendi, placeat qui corporis!
+    </p>
+    <br>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+        molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+        numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+        optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
+        obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
+    </p>
+</div>
+{% endblock body %}
+{% block footer %}
+<div class="container-fluid">
+    <footer>
+        <div class="row">
+            <!--                <div class="footer navbar navbar-light navbar-bottom">-->
+            <nav class="footer navbar sticky-bottom navbar-light">
+                <div class="container">
+                    <p>FIlmwebscrapper sample project <a href="https://czaja.dev/">www.czaja.dev</a> by <a
+                            href="https://github.com/mateuszone">@mateuszone</a>.</p>
+                </div>
+        </div>
+</div>
+</footer>
+</div>
+</div>
+</body>
+{% endblock footer %}

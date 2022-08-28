@@ -1,0 +1,94 @@
+{% extends 'main.html' %}
+{% load bootstrap %}
+{% load static %}
+{% block title %}Profile{% endblock title %}
+{% block script %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock script %}
+{% block body %}
+    <header class="header">
+    <div class="container">
+      <div class="teacher-name" style="padding-top:20px;">
+
+        <div class="row" style="margin-top:0px;">
+        <div class="col-md-9">
+          <h2 style="font-size:38px"><strong>Welcome {{ username }}</strong></h2>
+        </div>
+        </div>
+      </div>
+    </div>
+  </header>
+    <!--End of Header-->
+
+<!-- Main container -->
+  <div class="container">
+
+<!-- Section:Biography -->
+  <div class="row">
+        <div class="col-md-12">
+          <div class="card card-block text-xs-left">
+            <h2 class="card-title" style="color:#009688"><i class="fa fa-user fa-fw"></i>About yourself</h2>
+            <div style="height: 15px"></div>
+
+              <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form | bootstrap }}
+                <input class="btn btn-info pull-left" type="submit" value="SUBMIT to change">
+                </form>
+
+          </div>
+        </div>
+      </div>
+<!-- End:Biography -->
+
+<!--Section:Movies Seen-->
+  <div class="row">
+    <div class="col-md-12">
+        <div class="card card-block">
+          <h2 class="card-title"  style="color:#009688"><i class="fa fa-rocket fa-fw"></i>Movies seen</h2>
+          <ul class="list-group" style="margin-top:15px;margin-bottom:15px;">
+                {% for movie in user_reviews %}
+                    {% if movie.seen == True %}
+                      <li class="list-group-item"><a href="{% url 'Films_details' movie.film.id %}">{{ movie.film.title }}</a></li>
+                    {% endif %}
+                {% endfor %}
+          </ul>
+        </div>
+    </div>
+  </div>
+<!-- End :Interests -->
+
+
+<!-- Section:Reviews -->
+  <div class="row">
+      <div class="col-md-12">
+          <div class="card card-block">
+            <h2 class="card-title" style="color:#009688"><i class="fa fa-cubes fa-fw"></i>Reviews</h2>
+            <div style="height: 15px"></div>
+            <table class="table table-bordered">
+              <thead class="thead-default">
+                <tr>
+                  <th>Title</th>
+                  <th>Rating</th>
+                  <th>Review</th>
+                </tr>
+              </thead>
+                        {% for movie in user_reviews %}
+                            <tbody>
+                              <td><a href="{% url 'Films_details' movie.film.id %}">{{ movie.film.title }}</a></td>
+                              <td>{{ movie.user_rating }}</td>
+                              <td>{{ movie.user_review }}</td>
+                            </tbody>
+                        {% endfor %}
+            </table>
+          </div>
+      </div>
+  </div>
+
+
+</div> <!--End of Container-->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+{% endblock body %}
+

@@ -1,0 +1,46 @@
+{% extends 'main.html' %}
+{% load bootstrap %}
+{% load static %}
+{% block title %}Profile{% endblock title %}
+{% block script %}
+<link rel="stylesheet" href="{% static 'css/search.css' %}">
+{% endblock script %}
+{% block body %}
+<body>
+<section class="hero is-info is-fullheight">
+
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="column is-6 is-offset-3">
+                <h1 class="title">
+                    Welcome to the search page
+                </h1>
+                <h2 class="subtitle">
+                    {% if error %}
+                    {{ error }}
+                    {% else %}
+                    Search for a movie or a show
+                    {% endif %}
+                </h2>
+                <form method="post" action="/search/">
+                    {% csrf_token %}
+                    <div class="box">
+                        <div class="field is-grouped">
+                            <p class="control is-expanded">
+                                <input name="search" class="input" type="text" placeholder="Type movie title">
+                            </p>
+                            <p class="control">
+                                <input type="submit" class="button is-info" value="Search">
+                            </p>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+{% endblock body %}
+{% block footer %}
+{% endblock footer %}

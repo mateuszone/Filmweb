@@ -1,0 +1,82 @@
+{% extends 'main.html' %}
+{% load bootstrap %}
+{% load static %}
+{% block title %}Premieres{% endblock title %}
+{% block body %}
+<div class="containe-fluid">
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-3">Premieres in Polish Cinemas</h1>
+            <p>This site contains data scrapped asynchronously from filmweb.pl.</p>
+            <p><a class="btn btn-primary btn-lg" href="https://www.filmweb.pl/ranking/wantToSee/next30daysPoland"
+                  role="button">Visit Filmweb.pl &raquo;</a></p>
+        </div>
+    </div>
+</div>
+<h1></h1>
+<div class="container-fluid" style="padding: 2rem;">
+    <div class="row">
+        {% for movie in page_obj %}
+        <div class="col-lg-2 col-md-4 col-sm-12">
+            <div class="card">
+                <img class="card-img-top" src="{{ movie.poster }}" style="height: 400px;"
+                     onerror="if (this.src != 'error.jpg') this.src = 'https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg';"
+                     alt="{{ movie.title }}">
+                <div class="card-body">
+                    <h5 class="card-title text-center"
+                        style="overflow-x: hidden; padding-top: 1rem; border: 2px solid turquoise; border-radius: 15px;">
+                        {{ movie.title }}</h5>
+                    <p class="card-text" style="overflow-x: hidden; overflow-y: auto;">{{ movie.description }}</p>
+                    <a href="{% url 'Films_details' movie.id %}" class="btn btn-primary" style="margin-top: 1rem;">Przejdz
+                        do filmu</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="container-flex" style="padding-top: 4rem;">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+
+                {% if page_obj.has_previous %}
+                {% if page_obj.number > 2 %}
+                <li class="page-item">
+                    <a class="page-link" href="?page=1">First</a>
+                </li>
+                {% endif %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" tabindex="-1">Previous</a>
+                </li>
+                {% endif %}
+                <li class="page-item disabled"><a class="page-link" href="#">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</a></li>
+                {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                </li>
+                {% if page_obj.number < page_obj.paginator.num_pages|add:'-1'  %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+                </li>
+                {% endif %}
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+
+</div>
+</div>
+{% endblock body %}
+{% block footer %}
+<div class="container-fluid">
+    <footer>
+        <div class="row">
+            <div class="footer navbar navbar-light">
+                <div class="container">
+                    <p>FIlmwebscrapper sample project <a href="https://czaja.dev/">www.czaja.dev</a> by <a
+                            href="https://github.com/mateuszone">@mateuszone</a>.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+{% endblock footer %}

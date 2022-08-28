@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+{% load bootstrap %}
+{% block title %}Delete{% endblock title %}
+{% block body %}
+<form method="post">
+    <div class="container" style="padding-top: 1.5rem">
+        {% csrf_token %}
+        <div class="row">
+            <h1>Are you sure you want to delete the Actor ?</h1>
+        </div>
+        <div class="row" >
+            <p>
+                <button type="submit" value="Confirm">Confirm</button>
+            </p>
+        </div>
+    </div>
+
+    </div>
+</form>
+{% endblock %}
+{% block footer %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="footer navbar fixed-bottom navbar-light ">
+            <div class="container">
+                <p>FIlmwebscrapper sample project <a href="https://czaja.dev/">www.czaja.dev</a> by <a
+                        href="https://github.com/mateuszone">@mateuszone</a>.</p>
+            </div>
+        </div>
+    </div>
+    </footer>
+</div>
+{% endblock footer %}

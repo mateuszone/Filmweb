@@ -1,0 +1,77 @@
+{% extends 'main.html' %}
+{% load bootstrap %}
+{% load static %}
+{% block title %}Film details{% endblock title %}
+{% block script %}
+<link rel="stylesheet" href="{% static 'css/film_details_maicons.css' %}">
+<link rel="stylesheet" href="{% static 'css/film_details_owl_carousel.css' %}">
+<link rel="stylesheet" href="{% static 'css/film_details_animate.css' %}">
+<link rel="stylesheet" href="{% static 'css/film_details_theme.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+{% endblock script %}
+{% block body %}
+
+<!--<div class="page-section pt-5">-->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
+            <nav aria-label="Breadcrumb">
+                <ol class="breadcrumb bg-transparent py-0 mb-5">
+                    <li class="breadcrumb-item"><a href="{% url 'Premieres' %}">Premieres</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'Films' %}">Films</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"> {{ film.title }}</li>
+                </ol>
+            </nav>
+        </div>
+    </div> <!-- .row -->
+
+    <div class="row">
+        <div class="col-lg-8">
+            <article class="blog-details">
+                <div class="post-thumb">
+                    <img src="{{ film.poster }}"
+                         onerror="if (this.src != 'error.jpg') this.src = 'https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg';"
+                         alt="{{ film.title }}">
+                </div>
+
+                <h2 class="post-title h1">{{ film.title }}</h2>
+                <div class="post-content">
+                    <p>
+                        <a href="{{ film.description }}">Visit IMDB to find more information.
+                            This is only a learning purpose website.
+                        </a>
+                    </p>
+                </div>
+            </article> <!-- .blog-details -->
+        </div>
+    </div> <!-- .row -->
+</div> <!-- .container -->
+</div> <!-- .page-section -->
+
+
+<script src="../assets/js/jquery-3.5.1.min.js"></script>
+
+<script src="../assets/js/bootstrap.bundle.min.js"></script>
+
+<script src="{% static 'js/film_detail_owl_carousel_min.js' %}"></script>
+<script src="{% static 'js/film_details_wow_min.js' %}"></script>
+<script src="{% static 'js/film_details_theme.js' %}"></script>
+
+<div class="container" style="padding-left: 15px;">
+    <div class="row">
+        {% if not error %}
+        <h4>Do you want to add movie to db?</h4>
+        {% else %}
+        <h4>{{ error }}</h4>
+        {% endif %}
+    </div>
+    <div class="row">
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <form action="{% url 'Imdb_add' film.imdb_id %}">
+                <input type="submit" class="btn btn-primary" value="Add to db">
+            </form>
+    </div>
+</div>
+</div>
+{% endblock body %}

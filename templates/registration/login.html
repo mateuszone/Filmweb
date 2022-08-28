@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+{% load bootstrap %}
+{% block title %}Login{% endblock title %}
+{% block body %}
+<div class="container">
+    <div class="success_msg">
+        <div class="row" style="margin-top:0px;">
+            <div class="col-md-12">
+                <h2 style="font-size:38px">{{ request.session.message_from_registration }}</h2>
+            </div>
+        </div>
+    </div>
+    <form method="post" class="login-form">
+        {% csrf_token %}
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        {{ form| bootstrap }}
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </form>
+</div>
+{% endblock %}
+{% block footer %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="footer navbar fixed-bottom navbar-light ">
+            <div class="container">
+                <p>FIlmwebscrapper sample project <a href="https://czaja.dev/">www.czaja.dev</a> by <a
+                        href="https://github.com/mateuszone">@mateuszone</a>.</p>
+            </div>
+        </div>
+    </div>
+    </footer>
+</div>
+{% endblock footer %}

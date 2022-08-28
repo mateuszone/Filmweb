@@ -1,0 +1,35 @@
+{% extends 'main.html' %}
+{% load bootstrap %}
+{% block title %}Delete{% endblock title %}
+{% block body %}
+<!--<div class="container-fluid" style="padding-left: 3rem; padding-right: 3rem; padding-top: 1.5rem">-->
+<!--    <div class="row">-->
+<form method="post">
+    <div class="container" style="padding-top: 1.5rem">
+    {% csrf_token %}
+    <div class="row">
+        <div class="group-form">
+            <h3>Are you sure you want to delete the Film ?</h3>
+            <p>
+                <button type="submit" value="Confirm">Confirm</button>
+            </p>
+        </div>
+    </div>
+        </div>
+</form>
+<!--        </div>-->
+<!--</div>-->
+{% endblock %}
+{% block footer %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="footer navbar fixed-bottom navbar-light ">
+            <div class="container">
+                <p>FIlmwebscrapper sample project <a href="https://czaja.dev/">www.czaja.dev</a> by <a
+                        href="https://github.com/mateuszone">@mateuszone</a>.</p>
+            </div>
+        </div>
+    </div>
+    </footer>
+</div>
+{% endblock footer %}

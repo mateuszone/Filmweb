@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+{% load bootstrap %}
+{% block title %}Actor edit{% endblock title %}
+
+{% block body %}
+<div class="container" style="padding-top: 1.5rem">
+    <h1>Edit actor record below: </h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form | bootstrap}}
+        <button type="submit" class="btn btn-success">Save Changes</button>
+    </form>
+</div>
+{% endblock body %}

@@ -1,0 +1,96 @@
+{% extends 'main.html' %}
+{% load bootstrap %}
+{% load static %}
+{% block title %}Films{% endblock title %}
+{% block script %}
+{% endblock script %}
+{% block body %}
+<div class="container-fluid" style="padding-left: 3rem; padding-right: 3rem; padding-top: 1.5rem">
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Users rating</th>
+                <th scope="col">Imdb rating</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Cast</th>
+                <th scope="col">Poster</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for film in page_obj %}
+            <tr>
+                <th scope="row">{{ film.id }}</th>
+                <td><a href="{% url 'Films_details' film.id %} ">{{ film.title }}</a></td>
+                <td>{{ film.description }}</td>
+                <td>{{ film.average_user_rating }}</td>
+                <td>
+                   {% if film.imdb_rating is not None %}
+                    {{ film.imdb_rating }}
+                    {% else %}
+                    N/A
+                    {% endif %}
+                </td>
+                <td>
+                    {% if film.genre is not None %}
+                    {{ film.genre }}
+                    {% else %}
+                    N/A
+                    {% endif %}
+                </td>
+                <td>
+                    {% for role in film.roles.all %}
+                    <a href="{% url 'Actors' %}">{{ role }} {{ role.id }}</a>
+                    {% endfor %}
+                </td>
+                <td>
+                    <img src="{{ film.poster }}"
+                         onerror="if (this.src != 'error.jpg')
+                             this.src = 'https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg';"
+                         alt="{{ film.title }}" style="width: 100px; height: 100px;">
+                </td>
+                <td><a href="{% url 'Films_modify' film.id %}" class="btn btn-success">Edit Film</a></td>
+                <td><a href="{% url 'Films_delete' film.id %}" class="btn btn-danger">Delete Film</a></td>
+                <td><a href="{% url 'Rate' film.id %}" class="btn btn-danger">Rate it!</a></td>
+
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row">
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <button><a href="{% url 'Films_add' %}" class="btn btn-success">Create New Film</a></button>
+    </div>
+
+</div>
+{% endblock body %}
+
+
+
+
+

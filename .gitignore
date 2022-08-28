@@ -1,0 +1,10 @@
+*.pyc
+venv
+db.sqlite3
+__pycache__
+.idea
+bootstrap_templates
+.env
+my_media/*
+amazon-rds-ca-cert.pem
+basic/migrations
