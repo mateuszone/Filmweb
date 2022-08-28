@@ -75,6 +75,6 @@ python manage.py runserver --settings=Filmweb.settings.dev
 
 **Note** in the settings file you should complete your own database settings.
 
-## Source
+## Live
 
-This is my first own project from scratch.
+Please visit https://filmwebscrapping.herokuapp.com/ to see live version 
