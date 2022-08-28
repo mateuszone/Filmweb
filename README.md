@@ -3,10 +3,13 @@ A real movie-fan application built with Django Framework. In this project I've i
 
 Home:
 - simple main page
+
 Premieres:
 - Contains a paginated movies list asynchronously scrapped from Filmweb.pl
+
 Search:
 - Uses external Movie API for searching a movie.
+
 Films:
 - at this page user can see table with all films in db and make CRUD operations on them.
 - this page use pagination.
@@ -56,7 +59,7 @@ Then install the project dependencies:
 pip install -r requirements.txt
 ```
 Then create .env file with your local settings such as SECRET_KEY, and your personal OMDB_KEY from https://www.omdbapi.com/ if you want to search for new movies
-```
+
 if you leave settings as they are django will create as default sqlite3 db when you commands below:
 ```
 python manage.py makemigrations
